@@ -6,7 +6,19 @@ let banner = document.querySelector('.app__image');
 let titulo = document.querySelector('.app__title');
 let botoesAtivos = document.querySelectorAll('.app__card-button');
 let musicaFocoInput = document.querySelector('#alternar-musica');
+let startPauseBt = document.querySelector('#start-pause');
+let startPauseBtTexto = document.querySelector('#start-pause span')
+let imgPlayBt = document.querySelector('.app__card-primary-butto-icon')
+let tempoNaTela = document.querySelector('#timer');
 let musica = new Audio('/sons/luna-rise-part-one.mp3');
+let somIniciar = new Audio('/sons/play.wav');
+let somPausar = new Audio('/sons/pause.mp3');
+let somEncerrar = new Audio('/sons/beep.mp3');
+
+let tempoDecorridoEmSegundos = 1500;
+let intervaloId = null;
+
+
 musica.loop = true
 
 musicaFocoInput.addEventListener('change', () => {
@@ -18,23 +30,27 @@ musicaFocoInput.addEventListener('change', () => {
 })
 
 focoBt.addEventListener('click', () => {
+    tempoDecorridoEmSegundos = 1500;
     alteraContexto('foco');
     focoBt.classList.add('active');
 });
 
 curtoBt.addEventListener('click', () =>{
+    tempoDecorridoEmSegundos = 300;
     alteraContexto('descanso-curto');
     curtoBt.classList.add('active');
 });
 
 longoBt.addEventListener('click', () => {
+    tempoDecorridoEmSegundos = 900;
     alteraContexto('descanso-longo');
     longoBt.classList.add('active')
 });
 
 function alteraContexto(contexto) {
+    mostrarTempo();
     html.setAttribute('data-contexto', contexto);
-    banner.setAttribute('src', `/imagens/${contexto}.png`);
+    banner.setAttribute('src', `/imagens/${contexto}.png`);   
     botoesAtivos.forEach(function (contexto) {
         contexto.classList.remove('active')
     })
@@ -61,9 +77,49 @@ function alteraContexto(contexto) {
         default:
         break;
     }
-
-
-
-
 }
+
+
+let contagemRegressiva = () => {
+    
+    if(tempoDecorridoEmSegundos <= 0){
+        somEncerrar.play();
+        alert('Tempo finalizado!');
+        zerarContador();
+        return
+    }
+    tempoDecorridoEmSegundos -= 1;
+    mostrarTempo();
+}
+
+startPauseBt.addEventListener('click', iniciarOuPausarContador);
+
+function iniciarOuPausarContador(){
+    
+    if(intervaloId){ //pausar
+        zerarContador();
+        somPausar.play();
+        return
+    }
+    somIniciar.play();
+    intervaloId = setInterval(contagemRegressiva, 1000);
+    imgPlayBt.setAttribute('src', '/imagens/pause.png');
+    startPauseBtTexto.textContent = 'Pausar';
+}
+
+function zerarContador(){
+    clearInterval(intervaloId);
+    startPauseBtTexto.textContent = 'Começar'
+    imgPlayBt.setAttribute('src', '/imagens/play_arrow.png');
+    intervaloId = null
+}
+
+
+function mostrarTempo(){
+    let tempo = new Date(tempoDecorridoEmSegundos * 1000);
+    let tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute: '2-digit', second: '2-digit'});
+    tempoNaTela.innerHTML = `${tempoFormatado}`;
+}
+
+mostrarTempo(); //mostrar o tempo a qualquer momento
 
