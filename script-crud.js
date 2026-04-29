@@ -2,6 +2,7 @@ let btnAdicionarTarefa = document.querySelector('.app__button--add-task');
 let formAdicionarTarefa = document.querySelector('.app__form-add-task');
 let textArea = document.querySelector('.app__form-textarea');
 let ulTarefas = document.querySelector('.app__section-task-list')
+let paragrafoDescricaoTarefa = document.querySelector('.app__section-active-task-description')
 let btnCancelar = document.querySelector('.app__form-footer__button--cancel');
 
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || []; //SE NÃO HOUVER VALORES, CAI NO ARRAY VAZIO
@@ -46,6 +47,11 @@ function criarElementoTarefa(tarefa) {
     li.append(svg);
     li.append(paragrafo);
     li.append(botao);
+
+    li.onclick = () => {
+        paragrafoDescricaoTarefa.textContent = tarefa.descricao
+        li.classList.add('app__section-task-list-item-active')
+    }
 
     return li;
 }
