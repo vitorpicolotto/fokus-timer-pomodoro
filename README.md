@@ -1,4 +1,4 @@
-# 🍅 Fokus - Seu Companheiro de Produtividade
+# Fokus - Seu Companheiro de Produtividade
 
 Bem-vindo ao **Fokus**! Um aplicativo web simples e bonito para ajudar você a ficar focado e produtivo usando a famosa técnica Pomodoro.
 
@@ -51,6 +51,17 @@ A técnica Pomodoro é um método científico para gerenciar seu tempo e aumenta
 - Cada modo tem uma visual próprio e inspirador
 - Totalmente responsiva e bonita
 
+### 📝 Gerenciamento de Tarefas (CRUD)
+
+- **Adicionar Tarefas**: Crie uma nova tarefa clicando no botão "Adicionar Tarefa"
+- **Selecionar Tarefas**: Clique em uma tarefa para marcá-la como ativa
+- **Editar Tarefas**: Clique no ícone de edição para modificar o nome da tarefa
+- **Marcar como Concluída**: Quando um foco termina, a tarefa ativa é automaticamente marcada como completa
+- **Remover Tarefas**: 
+  - Remover apenas tarefas concluídas
+  - Remover todas as tarefas de uma vez
+- **Persistência de Dados**: Todas as tarefas são salvas automaticamente no `localStorage`
+
 ---
 
 ## 🛠️ Como o Projeto Foi Feito
@@ -98,6 +109,57 @@ fokus-timer-pomodoro/
    - Pause quando quiser clicando no botão
    - Mude de modo a qualquer momento para reiniciar o timer
    - A música de fundo toca continuamente (se ativada)
+
+4. **Gerenciar Tarefas**:
+   - Adicione uma tarefa clicando em "Adicionar Tarefa"
+   - Selecione a tarefa que será trabalhada
+   - Quando o foco termina, a tarefa é marcada como concluída
+   - Edite ou remova tarefas conforme necessário
+
+---
+
+## 🚀 Principais Melhorias
+
+✅ **Sistema de Tarefas Inteligente**: Integração completa entre o timer Pomodoro e a lista de tarefas
+✅ **Sincronização Automática**: Tarefas são automaticamente marcadas como concluídas ao finalizar um foco
+✅ **Persistência Local**: Seus dados são salvos no navegador e recuperados ao voltar
+✅ **Interface Responsiva**: Funciona perfeitamente em desktop, tablet e mobile
+✅ **Feedback Sonoro**: Sons diferentes para cada ação do usuário
+✅ **Temas Visuais**: Cores e imagens dinâmicas que mudam conforme o modo de trabalho
+
+---
+
+## 📱 Como Usar
+
+### Passo 1: Selecione o Modo
+Escolha entre **Foco**, **Descanso Curto** ou **Descanso Longo**
+
+### Passo 2: Adicione suas Tarefas
+- Clique em "Adicionar Tarefa"
+- Digite a descrição da tarefa
+- A tarefa será adicionada à lista
+
+### Passo 3: Selecione uma Tarefa
+Clique na tarefa que deseja trabalhar durante este foco
+
+### Passo 4: Inicie o Timer
+- Clique no botão "Começar"
+- Trabalhe com total concentração
+- Quando o timer terminar, a tarefa será marcada como concluída automaticamente
+
+### Passo 5: Gerencie suas Tarefas
+- **Editar**: Clique no ícone de edição para renomear a tarefa
+- **Remover Completas**: Limpe todas as tarefas concluídas
+- **Remover Todas**: Limpe toda a lista de tarefas
+
+---
+
+## 💡 Dicas de Produtividade
+
+1. **Use os modos corretamente**: A cada 4 pomodoros, aproveite o descanso longo
+2. **Tarefas específicas**: Crie tarefas bem definidas e alcançáveis em um pomodoro
+3. **Sem distrações**: Desative notificações e mantenha o foco
+4. **Ative a música**: A música de fundo pode ajudar na concentração
 
 4. **Fim do Timer**:
    - Um alerta sonoro toca
@@ -196,4 +258,4 @@ function mostrarTempo(){
 
 **Desenvolvido com ❤️ para aumentar sua produtividade**
 
-Boa sorte e bom foco! 🍅⏰
+Boa sorte e bom foco! ⏰
